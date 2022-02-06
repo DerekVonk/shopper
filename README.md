@@ -1,5 +1,7 @@
 # shopper
-Assessment 
+Assessment project.
+
+Still very much a WIP.
 
 
 ### Running the Project
