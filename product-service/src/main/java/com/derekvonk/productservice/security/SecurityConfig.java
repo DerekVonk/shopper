@@ -21,12 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                // for now, permit all
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/products").permitAll()
                 .antMatchers(HttpMethod.GET,"/products/*").permitAll()
-                .antMatchers(HttpMethod.POST,"/products").authenticated()
-                .antMatchers(HttpMethod.PUT,"/products/*").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE,"/products/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/products").permitAll()
+                .antMatchers(HttpMethod.POST,"/products/searchBy").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/products/*").permitAll()
+                .antMatchers(HttpMethod.PUT,"/products/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic().and()

@@ -1,4 +1,4 @@
-package com.derekvonk.productservice.product;
+package com.derekvonk.productservice.product.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

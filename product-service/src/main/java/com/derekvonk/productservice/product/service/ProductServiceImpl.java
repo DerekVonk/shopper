@@ -1,7 +1,11 @@
-package com.derekvonk.productservice.product;
+package com.derekvonk.productservice.product.service;
 
+import com.derekvonk.productservice.product.persistence.ProductRepository;
+import com.derekvonk.productservice.product.exceptions.ProductNotFoundException;
+import com.derekvonk.productservice.product.model.Product;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +18,13 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository repository;
 
     @Override
-    public List<Product> findAll() {
+    public Iterable<Product> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Product> searchProductsBy(Specification<Product> specification) {
+        return repository.findAll(specification);
     }
 
     @Override
